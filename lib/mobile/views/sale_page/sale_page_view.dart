@@ -1,67 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:ymk_pos/mobile/models/sale_page/product_model.dart';
+import 'package:ymk_pos/components/button/mainbutton.dart';
 
 class SalePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Sale Page"),
-      ),
-      body: SafeArea(
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisSpacing: 1,
-            crossAxisSpacing: 1,
-          ),
-          itemCount: productList.length,
-          itemBuilder: (context, index) {
-            return Stack(
-              alignment: Alignment.bottomCenter,
-              children: <Widget>[
-                Container(
-                  child: Card(
-                    elevation: 3,
-                    child: Image(
-                      image: NetworkImage(productList[index].url),
-                      // fit: BoxFit.fill,
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                    ),
-                  ),
+    return SafeArea(
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 1,
+                  crossAxisSpacing: 1,
                 ),
-                Container(
-                  color: Colors.green,
-                  width: MediaQuery.of(context).size.width,
-                  height: 30,
-                  margin: EdgeInsets.all(4),
-                  child: Column(
+                itemCount: productList.length,
+                itemBuilder: (context, index) {
+                  return Stack(
+                    alignment: Alignment.bottomCenter,
                     children: <Widget>[
-                      Text(
-                        productList[index].name,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(color: Colors.white),
+                      Container(
+                        child: Card(
+                          elevation: 3,
+                          child: Image(
+                            image: NetworkImage(productList[index].url),
+                            // fit: BoxFit.fill,
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
+                          ),
+                        ),
                       ),
-                      Text(
-                        productList[index].price,
-                        style: TextStyle(color: Colors.white),
-                      )
+                      Container(
+                        color: Colors.green,
+                        width: MediaQuery.of(context).size.width,
+                        height: 30,
+                        margin: EdgeInsets.all(4),
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              productList[index].name,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            Text(
+                              productList[index].price,
+                              style: TextStyle(color: Colors.white),
+                            )
+                          ],
+                        ),
+                      ),
                     ],
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
+                  );
+                },
+              ),
+            ),
+          ),
+          MainButton(
+            width: MediaQuery.of(context).size.width,
+            title: 'Total',
+            margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+            onPress: () {},
+          )
+        ],
       ),
     );
   }
 }
-
-
-
-
 
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';

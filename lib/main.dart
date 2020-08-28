@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'mobile/views/sale_page/sale_page_view.dart';
+import 'mobile/drawer.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SalePage(),
+      home: MobileDrawer(),
     );
   }
 }
