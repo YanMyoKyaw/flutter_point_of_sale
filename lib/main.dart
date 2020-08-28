@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'mobile/sale_page.dart';
+import 'mobile/views/sale_page/sale_page_view.dart';
 
 void main() {
   runApp(MyApp());
