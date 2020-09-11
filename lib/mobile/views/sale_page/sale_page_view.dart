@@ -5,12 +5,15 @@ import 'package:ymk_pos/components/button/mainbutton.dart';
 class SalePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
     return SafeArea(
       child: Column(
         children: <Widget>[
           Expanded(
             child: Container(
-              height: MediaQuery.of(context).size.height,
+              height: height,
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
@@ -28,14 +31,14 @@ class SalePage extends StatelessWidget {
                           child: Image(
                             image: NetworkImage(productList[index].url),
                             // fit: BoxFit.fill,
-                            height: MediaQuery.of(context).size.height,
-                            width: MediaQuery.of(context).size.width,
+                            height: height,
+                            width: width,
                           ),
                         ),
                       ),
                       Container(
                         color: Colors.green,
-                        width: MediaQuery.of(context).size.width,
+                        width: width,
                         height: 30,
                         margin: EdgeInsets.all(4),
                         child: Column(
@@ -43,11 +46,13 @@ class SalePage extends StatelessWidget {
                             Text(
                               productList[index].name,
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(color: Colors.white),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 13),
                             ),
                             Text(
                               productList[index].price,
-                              style: TextStyle(color: Colors.white),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12),
                             )
                           ],
                         ),
@@ -59,7 +64,7 @@ class SalePage extends StatelessWidget {
             ),
           ),
           MainButton(
-            width: MediaQuery.of(context).size.width,
+            width: width,
             title: 'Total',
             margin: EdgeInsets.only(left: 10, right: 10, top: 10),
             onPress: () {},
