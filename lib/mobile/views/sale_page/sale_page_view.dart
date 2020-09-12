@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ymk_pos/mobile/models/sale_page/product_model.dart';
 import 'package:ymk_pos/components/button/mainbutton.dart';
+import 'checkout_page.dart';
 
 class SalePage extends StatelessWidget {
   @override
@@ -67,7 +68,9 @@ class SalePage extends StatelessWidget {
             width: width,
             title: 'Total',
             margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-            onPress: () {},
+            onPress: () {
+              Navigator.pushNamed(context, CheckoutPage.tag);
+            },
           )
         ],
       ),
