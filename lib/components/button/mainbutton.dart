@@ -5,11 +5,13 @@ typedef OnPress();
 class MainButton extends StatelessWidget {
   MainButton(
       {@required this.width,
+      this.height = 50,
       @required this.title,
       this.margin,
       this.onPress,
       this.icon});
   final double width;
+  final double height;
   final String title;
   final OnPress onPress;
   final EdgeInsetsGeometry margin;
@@ -17,14 +19,14 @@ class MainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: height,
       width: width,
       margin: margin,
       child: RaisedButton(
         onPressed: () {
           onPress();
         },
-        color: Colors.green,
+        color: Colors.blue,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

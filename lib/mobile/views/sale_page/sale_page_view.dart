@@ -38,7 +38,7 @@ class SalePage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        color: Colors.green,
+                        color: Colors.blue,
                         width: width,
                         height: 30,
                         margin: EdgeInsets.all(4),
@@ -66,7 +66,8 @@ class SalePage extends StatelessWidget {
           ),
           MainButton(
             width: width,
-            title: 'Total',
+            height: 40,
+            title: 'Charge',
             margin: EdgeInsets.only(left: 10, right: 10, top: 10),
             onPress: () {
               Navigator.pushNamed(context, CheckoutPage.tag);
