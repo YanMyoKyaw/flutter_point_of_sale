@@ -34,6 +34,9 @@ abstract class RestClient {
   }
 
   static dynamic responseInterceptor(Response options) async {
+    if (options.data == null) {
+      options.data = [];
+    }
     return options;
   }
 
