@@ -24,7 +24,7 @@ class _MobileDrawerState extends State {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('hello'),
+        title: Text(drawerItems[selectIndex].title),
       ),
       drawer: Drawer(
         child: Column(
