@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'shop.dart';
 
 @JsonSerializable()
 class Brand {
@@ -8,7 +9,7 @@ class Brand {
   String createdAt;
   String updatedAt;
   String imgUrl;
-  int shopId;
+  Shop shopId;
   String createdBy, updatedBy;
 
   Brand(
@@ -31,7 +32,7 @@ class Brand {
       updatedAt: json['UpdatedAt'],
       description: json['Description'],
       imgUrl: json['ImgUrl'],
-      shopId: json['ShopId']);
+      shopId: Shop.fromJson(json['ShopId']));
   Map<String, dynamic> toJson() => {
         'Id': id,
         'Name': name,

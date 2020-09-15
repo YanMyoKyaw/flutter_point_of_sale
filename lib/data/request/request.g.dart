@@ -34,4 +34,23 @@ class _RestClient implements RestClient {
         .toList();
     return value;
   }
+
+  @override
+  getShop() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final Response<List<dynamic>> _result = await _dio.request('/shop',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    var value = _result.data
+        .map((dynamic i) => Shop.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
 }

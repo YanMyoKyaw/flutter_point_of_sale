@@ -1,6 +1,7 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import '../models/brand.dart';
+import '../models/shop.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 part 'request.g.dart';
@@ -12,10 +13,10 @@ abstract class RestClient {
   static RestClient create() {
     final dio = addInterceptors(Dio());
     dio.interceptors.add(PrettyDioLogger(
-        requestHeader: false,
-        responseHeader: false,
-        requestBody: false,
-        responseBody: false));
+        requestHeader: true,
+        responseHeader: true,
+        requestBody: true,
+        responseBody: true));
     return RestClient(dio);
   }
 
@@ -46,4 +47,7 @@ abstract class RestClient {
 
   @GET("/brand")
   Future<List<Brand>> getBrand();
+
+  @GET("/shop")
+  Future<List<Shop>> getShop();
 }
