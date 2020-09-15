@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'views/sale_page/sale_page_view.dart';
+import 'views/brand/brandlist.dart';
 
 class DrawerItem {
   String title;
@@ -9,6 +10,7 @@ class DrawerItem {
 
 List<DrawerItem> drawerItems = [
   DrawerItem('Sale', Icons.shop),
+  DrawerItem('Brand', Icons.more)
 ];
 
 class MobileDrawer extends StatefulWidget {
@@ -43,6 +45,8 @@ class _MobileDrawerState extends State {
     switch (index) {
       case 0:
         return SalePage();
+      case 1:
+        return BrandList();
     }
   }
 
