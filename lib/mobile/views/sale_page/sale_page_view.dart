@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:ymk_pos/mobile/models/sale_page/product_model.dart';
 import 'package:ymk_pos/components/button/mainbutton.dart';
 import 'checkout_page.dart';
+import 'package:ymk_pos/request/request.dart';
 
 class SalePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var _client = RestClient.create();
+    _client.getBrand().then((value) => print("Brand $value"));
     final size = MediaQuery.of(context).size;
     final width = size.width;
     final height = size.height;

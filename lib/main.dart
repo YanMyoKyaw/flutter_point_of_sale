@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     };
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'YMK Pos',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
