@@ -37,6 +37,7 @@ class BrandModel extends ChangeNotifier {
     notifyListeners();
 
     _brand = await _client.createBrand(brand);
+    _brandList.insert(0, _brand);
 
     _status = BrandModelStatus.Ended;
     notifyListeners();

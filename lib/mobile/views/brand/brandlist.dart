@@ -31,7 +31,7 @@ class BrandList extends StatelessWidget {
                           radius: 30,
                           backgroundImage: brand.imgUrl == ''
                               ? AssetImage("assets/brand.png")
-                              : NetworkImage("$FILE_PATH/brands/uu.jpg"),
+                              : NetworkImage("$FILE_PATH/brands/${brand.imgUrl}"),
                         ),
                         title: new Text(
                           brand.name,
