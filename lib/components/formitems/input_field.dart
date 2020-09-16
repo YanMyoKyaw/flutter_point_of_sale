@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InputField extends StatelessWidget{
-  InputField({@required this.title, @required this.controller, this.isRequired = false, this.errorMessage, this.inputType = TextInputType.text});
+  InputField({@required this.title, @required this.controller, this.isRequired = false, this.errorMessage = 'This field required!', this.inputType = TextInputType.text});
   final String title;
   final TextEditingController controller;
   final bool isRequired;
@@ -28,7 +28,7 @@ class InputField extends StatelessWidget{
           ),
           validator: (value) {
             if (isRequired && value.isEmpty) {
-              return errorMessage.isNotEmpty? errorMessage : 'This field required!';
+              return errorMessage;
             }
             return null;
           },

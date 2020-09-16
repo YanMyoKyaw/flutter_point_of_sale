@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ymk_pos/mobile/models/brand/brand_model.dart';
 import 'package:provider/provider.dart';
 import 'package:ymk_pos/data/models/brand.dart';
+import 'package:ymk_pos/config/config.dart';
+import 'brandnew.dart';
 
 class BrandList extends StatelessWidget {
   @override
@@ -27,7 +29,9 @@ class BrandList extends StatelessWidget {
                       child: ListTile(
                         leading: CircleAvatar(
                           radius: 30,
-                          backgroundImage: AssetImage("assets/brand.png"),
+                          backgroundImage: brand.imgUrl == null
+                              ? AssetImage("assets/brand.png")
+                              : NetworkImage("$FILE_PATH/brands/uu.jpg"),
                         ),
                         title: new Text(
                           brand.name,
@@ -46,7 +50,9 @@ class BrandList extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed(BrandNew.tag);
+        },
         child: Icon(Icons.add),
       ),
     );

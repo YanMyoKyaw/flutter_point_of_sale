@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'mobile/drawer.dart';
 import 'mobile/views/sale_page/checkout_page.dart';
+import 'mobile/views/brand/brandnew.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final routers = <String, WidgetBuilder>{
       CheckoutPage.tag: (context) => CheckoutPage(),
+      BrandNew.tag: (context) => BrandNew(),
     };
 
     return MaterialApp(

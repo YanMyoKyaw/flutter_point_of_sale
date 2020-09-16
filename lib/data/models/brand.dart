@@ -42,6 +42,6 @@ class Brand {
         'CreatedAt': createdAt,
         'UpdatedAt': updatedAt,
         'ImgUrl': imgUrl,
-        'ShopId': shopId
+        'ShopId': shopId.toJson()
       };
 }
