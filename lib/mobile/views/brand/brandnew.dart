@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:ymk_pos/components/formitems/formitems.dart';
 import 'package:ymk_pos/components/button/mainbutton.dart';
 import 'package:ymk_pos/config/config.dart';
+import 'package:ymk_pos/components/img/imagetype.dart';
+import 'package:ymk_pos/data/models/brand.dart';
+import 'package:ymk_pos/mobile/models/brand/brand_model.dart';
+import 'package:ymk_pos/data/models/shop.dart';
 import 'dart:io';
 
 class BrandNew extends StatefulWidget {
@@ -14,6 +18,8 @@ class _BrandNewState extends State<BrandNew> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _name = TextEditingController();
   final TextEditingController _description = TextEditingController();
+  AppUtil appUtil = AppUtil();
+  BrandModel brandModel = BrandModel();
   File coverPhoto;
   @override
   Widget build(BuildContext context) {
@@ -22,6 +28,7 @@ class _BrandNewState extends State<BrandNew> {
       appBar: AppBar(
         title: Text("Create Brand"),
       ),
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(10),
@@ -57,14 +64,13 @@ class _BrandNewState extends State<BrandNew> {
                                     )
                                   ],
                                 )
-                              :
-                              Container(
-                                padding: EdgeInsets.all(5),
-                                child: Image(
-                                  image: FileImage(coverPhoto),
-                                  fit: BoxFit.fill,
+                              : Container(
+                                  padding: EdgeInsets.all(5),
+                                  child: Image(
+                                    image: FileImage(coverPhoto),
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
-                              ),
                         ),
                         onTap: () async {
                           final croppedFile = await pickAndCropImg();
@@ -93,8 +99,16 @@ class _BrandNewState extends State<BrandNew> {
               MainButton(
                 width: width,
                 title: "Submit",
-                onPress: () {
-                  _formKey.currentState.validate();
+                onPress: () async {
+                  if (_formKey.currentState.validate()) {
+                    String byteStr = coverPhoto != null
+                        ? await AppUtil().getBase64(coverPhoto)
+                        : '';
+                    String name = _name.text.toString();
+                    String description = _description.text.toString();
+                    Brand brand = Brand(name: name, description: description, shopId: Shop(id: 1), imgUrl: byteStr);
+                    brandModel.createBrand(brand);
+                  }
                 },
               )
             ],

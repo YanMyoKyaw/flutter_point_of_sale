@@ -29,7 +29,7 @@ class BrandList extends StatelessWidget {
                       child: ListTile(
                         leading: CircleAvatar(
                           radius: 30,
-                          backgroundImage: brand.imgUrl == null
+                          backgroundImage: brand.imgUrl == ''
                               ? AssetImage("assets/brand.png")
                               : NetworkImage("$FILE_PATH/brands/uu.jpg"),
                         ),

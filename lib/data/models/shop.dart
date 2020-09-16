@@ -31,6 +31,14 @@ class Shop {
         description: json['Description'],
         owner: json['Owner'],
       );
-  Map<String, dynamic> toJson() =>
-      {'Name': name, 'Description': description, 'Owner': owner};
+  Map<String, dynamic> toJson() => {
+        'Id': id,
+        'Name': name,
+        'Description': description,
+        'Owner': owner,
+        'CreatedBy': createdBy,
+        'UpdatedBy': updatedBy,
+        'CreatedAt': createdAt,
+        'UpdatedAt': updatedAt,
+      };
 }

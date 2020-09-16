@@ -10,11 +10,15 @@ class BrandModel extends ChangeNotifier {
   String _errorCode;
   String _errorMessage;
   List<Brand> _brandList;
+  Brand _brand;
 
   String get errorCode => _errorCode;
   String get errorMessage => _errorMessage;
   BrandModelStatus get status => _status;
   List<Brand> get brandList => _brandList;
+  Brand get brand => _brand;
+
+  BrandModel();
 
   BrandModel.instance() {
     getBrandList();
@@ -24,6 +28,16 @@ class BrandModel extends ChangeNotifier {
     _status = BrandModelStatus.Loading;
     notifyListeners();
     _brandList = await _client.getBrand();
+    _status = BrandModelStatus.Ended;
+    notifyListeners();
+  }
+
+  void createBrand(Brand brand) async {
+    _status = BrandModelStatus.Loading;
+    notifyListeners();
+
+    _brand = await _client.createBrand(brand);
+
     _status = BrandModelStatus.Ended;
     notifyListeners();
   }
