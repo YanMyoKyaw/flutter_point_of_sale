@@ -3,9 +3,9 @@ import 'package:ymk_pos/components/formitems/formitems.dart';
 import 'package:ymk_pos/components/button/mainbutton.dart';
 import 'package:ymk_pos/config/config.dart';
 import 'package:ymk_pos/components/img/imagetype.dart';
-import 'package:ymk_pos/data/models/brand.dart';
-import 'package:ymk_pos/mobile/models/brand/brand_model.dart';
-import 'package:ymk_pos/data/models/shop.dart';
+import 'package:ymk_pos/core/models/brand.dart';
+import 'package:ymk_pos/core/viewmodels/brand_model.dart';
+import 'package:ymk_pos/core/models/shop.dart';
 import 'dart:io';
 
 class BrandNew extends StatefulWidget {

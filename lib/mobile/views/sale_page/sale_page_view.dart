@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ymk_pos/mobile/models/sale_page/product_model.dart';
+import 'package:ymk_pos/core/viewmodels/product_model.dart';
 import 'package:ymk_pos/components/button/mainbutton.dart';
 import 'checkout_page.dart';
 

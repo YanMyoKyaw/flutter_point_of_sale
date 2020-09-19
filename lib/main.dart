@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'mobile/drawer.dart';
 import 'mobile/views/sale_page/checkout_page.dart';
 import 'mobile/views/brand/brandnew.dart';
+import 'locator.dart';
 
 void main() {
+  setUpLocator();
   runApp(MyApp());
 }
 
