@@ -48,7 +48,7 @@ class BrandList extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).pushNamed(BrandNew.tag);
+          Navigator.of(context).pushNamed('brandnew');
         },
         child: Icon(Icons.add),
       ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ymk_pos/components/button/mainbutton.dart';
 
 class CheckoutPage extends StatelessWidget {
-  static String tag = "checkout_page";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

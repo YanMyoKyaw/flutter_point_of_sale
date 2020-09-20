@@ -10,7 +10,6 @@ import '../base_view.dart';
 import 'dart:io';
 
 class BrandNew extends StatefulWidget {
-  static String tag = 'brand-new';
   @override
   _BrandNewState createState() => _BrandNewState();
 }

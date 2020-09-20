@@ -70,7 +70,7 @@ class SalePage extends StatelessWidget {
             title: 'Charge',
             margin: EdgeInsets.only(left: 10, right: 10, top: 10),
             onPress: () {
-              Navigator.pushNamed(context, CheckoutPage.tag);
+              Navigator.pushNamed(context, 'checkout');
             },
           )
         ],
