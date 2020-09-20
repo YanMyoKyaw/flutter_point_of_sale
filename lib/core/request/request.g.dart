@@ -64,6 +64,26 @@ class _RestClient implements RestClient {
   }
 
   @override
+  updateBrand(id, brand) async {
+    ArgumentError.checkNotNull(id, 'id');
+    ArgumentError.checkNotNull(brand, 'brand');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(brand?.toJson() ?? <String, dynamic>{});
+    final Response<String> _result = await _dio.request('/brand/{id}',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'PUT',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = _result.data;
+    return value;
+  }
+
+  @override
   getShop() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

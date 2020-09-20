@@ -3,7 +3,6 @@ import 'package:ymk_pos/core/viewmodels/brand_model.dart';
 import 'package:ymk_pos/core/models/brand.dart';
 import 'package:ymk_pos/config/config.dart';
 import '../base_view.dart';
-import 'brandnew.dart';
 
 class BrandList extends StatelessWidget {
   @override
@@ -37,7 +36,10 @@ class BrandList extends StatelessWidget {
                             fontSize: 17.0, fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(brand.description),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, 'brandedit',
+                            arguments: brand);
+                      },
                     ),
                   ),
                 );

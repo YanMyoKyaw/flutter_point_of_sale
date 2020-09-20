@@ -13,10 +13,10 @@ abstract class RestClient {
   static RestClient create() {
     final dio = addInterceptors(Dio());
     dio.interceptors.add(PrettyDioLogger(
-        requestHeader: true,
-        responseHeader: true,
-        requestBody: true,
-        responseBody: true));
+        requestHeader: false,
+        responseHeader: false,
+        requestBody: false,
+        responseBody: false));
     return RestClient(dio);
   }
 
@@ -54,6 +54,9 @@ abstract class RestClient {
 
   @POST("/brand")
   Future<Brand> createBrand(@Body() Brand brand);
+
+  @PUT('/brand/{id}')
+  Future<String> updateBrand(@PATCH('id') int id, @Body() Brand brand);
 
   @GET("/shop")
   Future<List<Shop>> getShop();

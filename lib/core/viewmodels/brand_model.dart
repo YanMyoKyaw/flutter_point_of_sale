@@ -35,4 +35,9 @@ class BrandModel extends BaseModel {
 
     setState(ViewState.Ended);
   }
+
+  Future<String> updateBrand(Brand brand) async {
+    String result = await _brandService.updateBrand(brand);
+    return result;
+  }
 }
