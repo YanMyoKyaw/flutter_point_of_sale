@@ -14,7 +14,6 @@ class BrandList extends StatelessWidget {
         child: BaseView<BrandModel>(
           onModelReady: (model) => model.getBrandList(),
           builder: (context, viewModel, child) {
-            print("brands ${viewModel.brandList}");
             return ListView.builder(
               padding: EdgeInsets.all(10),
               itemCount:

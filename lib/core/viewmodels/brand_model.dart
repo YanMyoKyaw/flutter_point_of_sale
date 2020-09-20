@@ -32,7 +32,6 @@ class BrandModel extends BaseModel {
     setState(ViewState.Loading);
 
     _brand = await _brandService.createBrand(brand);
-    _brandList.insert(0, _brand);
 
     setState(ViewState.Ended);
   }

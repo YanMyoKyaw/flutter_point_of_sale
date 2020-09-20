@@ -6,6 +6,7 @@ import 'package:ymk_pos/components/img/imagetype.dart';
 import 'package:ymk_pos/core/models/brand.dart';
 import 'package:ymk_pos/core/viewmodels/brand_model.dart';
 import 'package:ymk_pos/core/models/shop.dart';
+import 'package:ymk_pos/locator.dart';
 import 'dart:io';
 
 class BrandNew extends StatefulWidget {
@@ -19,7 +20,7 @@ class _BrandNewState extends State<BrandNew> {
   final TextEditingController _name = TextEditingController();
   final TextEditingController _description = TextEditingController();
   AppUtil appUtil = AppUtil();
-  BrandModel brandModel = BrandModel();
+  BrandModel brandModel = locator<BrandModel>();
   File coverPhoto;
   @override
   Widget build(BuildContext context) {

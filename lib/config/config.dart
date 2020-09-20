@@ -3,7 +3,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 
-const FILE_PATH = 'http://192.168.42.204:8080/content';
+const FILE_PATH = 'http://192.168.42.41:8080/content';
 
 Future<File> pickAndCropImg() async {
   final picker = ImagePicker();
