@@ -6,6 +6,6 @@ GetIt locator = GetIt.instance;
 
 void setUpLocator() {
   // locator.registerLazySingleton(() => RestClient.create());
-  locator.registerFactory(() => BrandModel());
-  locator.registerFactory(() => BrandService());
+  locator.registerFactory<BrandModel>(() => BrandModel());
+  locator.registerFactory<BrandService>(() => BrandService());
 }

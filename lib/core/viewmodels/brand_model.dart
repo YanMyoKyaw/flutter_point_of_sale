@@ -16,19 +16,19 @@ class BrandModel extends BaseModel {
   List<Brand> get brandList => _brandList;
   Brand get brand => _brand;
 
-  BrandModel();
+  // BrandModel();
 
-  BrandModel.instance() {
-    getBrandList();
-  }
+  // BrandModel.instance() {
+  //   getBrandList();
+  // }
 
-  void getBrandList() async {
+  Future getBrandList() async {
     setState(ViewState.Loading);
     _brandList = await _brandService.getBrandList();
     setState(ViewState.Ended);
   }
 
-  void createBrand(Brand brand) async {
+  Future createBrand(Brand brand) async {
     setState(ViewState.Loading);
 
     _brand = await _brandService.createBrand(brand);

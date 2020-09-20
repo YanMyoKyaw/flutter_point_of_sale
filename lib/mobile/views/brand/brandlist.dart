@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ymk_pos/core/viewmodels/brand_model.dart';
-import 'package:provider/provider.dart';
 import 'package:ymk_pos/core/models/brand.dart';
 import 'package:ymk_pos/config/config.dart';
 import '../base_view.dart';
