@@ -46,7 +46,11 @@ abstract class RestClient {
   }
 
   @GET("/brand")
-  Future<List<Brand>> getBrand();
+  Future<List<Brand>> getBrand(
+      @Query('sortby') String sortBy,
+      @Query('order') String order,
+      @Query("limit") int limit,
+      @Query("offset") int offset);
 
   @POST("/brand")
   Future<Brand> createBrand(@Body() Brand brand);

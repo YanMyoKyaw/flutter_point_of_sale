@@ -17,9 +17,18 @@ class _RestClient implements RestClient {
   String baseUrl;
 
   @override
-  getBrand() async {
+  getBrand(sortBy, order, limit, offset) async {
+    ArgumentError.checkNotNull(sortBy, 'sortBy');
+    ArgumentError.checkNotNull(order, 'order');
+    ArgumentError.checkNotNull(limit, 'limit');
+    ArgumentError.checkNotNull(offset, 'offset');
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'sortby': sortBy,
+      r'order': order,
+      r'limit': limit,
+      r'offset': offset
+    };
     final _data = <String, dynamic>{};
     final Response<List<dynamic>> _result = await _dio.request('/brand',
         queryParameters: queryParameters,
@@ -31,25 +40,6 @@ class _RestClient implements RestClient {
         data: _data);
     var value = _result.data
         .map((dynamic i) => Brand.fromJson(i as Map<String, dynamic>))
-        .toList();
-    return value;
-  }
-
-  @override
-  getShop() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final Response<List<dynamic>> _result = await _dio.request('/shop',
-        queryParameters: queryParameters,
-        options: RequestOptions(
-            method: 'GET',
-            headers: <String, dynamic>{},
-            extra: _extra,
-            baseUrl: baseUrl),
-        data: _data);
-    var value = _result.data
-        .map((dynamic i) => Shop.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }
@@ -70,6 +60,25 @@ class _RestClient implements RestClient {
             baseUrl: baseUrl),
         data: _data);
     final value = Brand.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  getShop() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final Response<List<dynamic>> _result = await _dio.request('/shop',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    var value = _result.data
+        .map((dynamic i) => Shop.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 }

@@ -5,7 +5,7 @@ class BrandService {
   var client = RestClient.create();
 
   Future<List<Brand>> getBrandList() async {
-    List<Brand> brandList = await client.getBrand();
+    List<Brand> brandList = await client.getBrand("CreatedAt", "desc", -1, 0);
     return brandList;
   }
 
