@@ -9,7 +9,7 @@ part of 'request.dart';
 class _RestClient implements RestClient {
   _RestClient(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    this.baseUrl ??= 'http://192.168.42.41:8080/v1';
+    this.baseUrl ??= 'http://192.168.42.95:8080/v1';
   }
 
   final Dio _dio;
@@ -17,17 +17,19 @@ class _RestClient implements RestClient {
   String baseUrl;
 
   @override
-  getBrand(sortBy, order, limit, offset) async {
+  getBrand(sortBy, order, limit, offset, query) async {
     ArgumentError.checkNotNull(sortBy, 'sortBy');
     ArgumentError.checkNotNull(order, 'order');
     ArgumentError.checkNotNull(limit, 'limit');
     ArgumentError.checkNotNull(offset, 'offset');
+    ArgumentError.checkNotNull(query, 'query');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'sortby': sortBy,
       r'order': order,
       r'limit': limit,
-      r'offset': offset
+      r'offset': offset,
+      r'query': query
     };
     final _data = <String, dynamic>{};
     final Response<List<dynamic>> _result = await _dio.request('/brand',

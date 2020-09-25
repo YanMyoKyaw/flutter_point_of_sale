@@ -8,32 +8,41 @@ class BrandModel extends BaseModel {
   BrandService _brandService = locator<BrandService>();
   String _errorCode;
   String _errorMessage;
-  List<Brand> _brandList;
+  List<Brand> _brandList = new List<Brand>();
   Brand _brand;
+  int limit = 20;
+  int offset = 0;
+  bool done = false;
+  String search = '';
 
   String get errorCode => _errorCode;
   String get errorMessage => _errorMessage;
   List<Brand> get brandList => _brandList;
   Brand get brand => _brand;
 
-  // BrandModel();
-
-  // BrandModel.instance() {
-  //   getBrandList();
-  // }
-
   Future getBrandList() async {
     setState(ViewState.Loading);
-    _brandList = await _brandService.getBrandList();
+    try {
+      var brands = await _brandService.getBrandList(limit, offset, search);
+      if (brands != null) {
+        _brandList = List.from(_brandList)..addAll(brands);
+        offset = offset + limit;
+        if (brands.length < limit) {
+          done = true;
+        }
+      } else {
+        done = true;
+      }
+    } catch (e) {
+      offset = offset - limit;
+      setState(ViewState.Error);
+    }
     setState(ViewState.Ended);
   }
 
-  Future createBrand(Brand brand) async {
-    setState(ViewState.Loading);
-
+  Future<Brand> createBrand(Brand brand) async {
     _brand = await _brandService.createBrand(brand);
-
-    setState(ViewState.Ended);
+    return brand;
   }
 
   Future<String> updateBrand(Brand brand) async {

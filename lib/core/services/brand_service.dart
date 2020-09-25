@@ -4,8 +4,10 @@ import '../models/brand.dart';
 class BrandService {
   var client = RestClient.create();
 
-  Future<List<Brand>> getBrandList() async {
-    List<Brand> brandList = await client.getBrand("UpdatedAt", "desc", -1, 0);
+  Future<List<Brand>> getBrandList(int limit, int offset, String search) async {
+    String query = "name__icontains:$search";
+    List<Brand> brandList =
+        await client.getBrand("UpdatedAt", "desc", limit, offset, query);
     return brandList;
   }
 

@@ -3,16 +3,27 @@ import 'package:ymk_pos/core/viewmodels/brand_model.dart';
 import 'package:ymk_pos/core/models/brand.dart';
 import 'package:ymk_pos/config/config.dart';
 import '../base_view.dart';
+import 'package:ymk_pos/locator.dart';
 
 class BrandList extends StatelessWidget {
+  final ScrollController _scrollController = ScrollController();
+  final brandModel = locator<BrandModel>();
   @override
   Widget build(BuildContext context) {
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        brandModel.getBrandList();
+      }
+    });
+
     return Scaffold(
       body: SafeArea(
         child: BaseView<BrandModel>(
           onModelReady: (model) => model.getBrandList(),
           builder: (context, viewModel, child) {
             return ListView.builder(
+              controller: _scrollController,
               padding: EdgeInsets.all(10),
               itemCount:
                   viewModel.brandList != null ? viewModel.brandList.length : 0,

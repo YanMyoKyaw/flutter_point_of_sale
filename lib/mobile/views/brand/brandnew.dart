@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ymk_pos/components/formitems/formitems.dart';
 import 'package:ymk_pos/components/button/mainbutton.dart';
 import 'package:ymk_pos/config/config.dart';
@@ -113,7 +114,21 @@ class _BrandNewState extends State<BrandNew> {
                             description: description,
                             shopId: Shop(id: 1),
                             imgUrl: byteStr);
-                        brandModel.createBrand(brand);
+                        var bdr = await brandModel.createBrand(brand);
+                        if (bdr != null) {
+                          Fluttertoast.showToast(
+                              msg: "Successfully Create",
+                              backgroundColor: Colors.green,
+                              textColor: Colors.white,
+                              gravity: ToastGravity.BOTTOM);
+                          Navigator.pop(context);
+                        } else {
+                          Fluttertoast.showToast(
+                              msg: "Fail to Create",
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              gravity: ToastGravity.BOTTOM);
+                        }
                       }
                     },
                   )

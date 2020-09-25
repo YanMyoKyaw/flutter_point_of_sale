@@ -6,6 +6,7 @@ import 'package:ymk_pos/components/img/imagetype.dart';
 import 'package:ymk_pos/core/models/brand.dart';
 import 'package:ymk_pos/core/models/shop.dart';
 import 'package:ymk_pos/core/viewmodels/brand_model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../base_view.dart';
 import 'dart:io';
 
@@ -136,7 +137,18 @@ class _BrandEditState extends State<BrandEdit> {
                         );
                         String result = await brandModel.updateBrand(brand);
                         if (result == '"OK"') {
+                          Fluttertoast.showToast(
+                              msg: "Successfully Edit",
+                              backgroundColor: Colors.green,
+                              textColor: Colors.white,
+                              gravity: ToastGravity.BOTTOM);
                           Navigator.pop(context);
+                        } else {
+                          Fluttertoast.showToast(
+                              msg: "Fail to Edit",
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              gravity: ToastGravity.BOTTOM);
                         }
                       }
                     },
