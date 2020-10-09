@@ -7,7 +7,7 @@ import 'package:ymk_pos/core/models/brand.dart';
 
 const String initialRoute = 'drawer';
 
-class Router {
+class Routers {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case 'drawer':

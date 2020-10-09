@@ -6,7 +6,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 part 'request.g.dart';
 
-@RestApi(baseUrl: 'http://192.168.42.95:8080/v1')
+@RestApi(baseUrl: 'http://192.168.42.23:8080/v1')
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 

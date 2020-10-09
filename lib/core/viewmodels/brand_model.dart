@@ -10,7 +10,7 @@ class BrandModel extends BaseModel {
   String _errorMessage;
   List<Brand> _brandList = new List<Brand>();
   Brand _brand;
-  int limit = 20;
+  int limit = 10;
   int offset = 0;
   bool done = false;
   String search = '';
